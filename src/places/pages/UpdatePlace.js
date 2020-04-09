@@ -46,7 +46,7 @@ const UpdatePlace = () => {
 
   const [formState, inputHandler] = useForm({
     title: {
-      vlue: identifiedPlace.title,
+      value: identifiedPlace.title,
       isValid: true
       },
       description: {
@@ -54,6 +54,11 @@ const UpdatePlace = () => {
         isValid: true
       }
   }, true);
+
+  const placeUpdateSubmitHandler = event => {
+    event.preventDefault();
+    console.log(formState.inputs);
+  };
 
   if (!identifiedPlace) {
     return (
@@ -64,7 +69,7 @@ const UpdatePlace = () => {
   }
 
   return (
-    <form className="place-form">
+    <form className="place-form" onSubmit={placeUpdateSubmitHandler}>
       <Input
         id="title"
         element="input"
