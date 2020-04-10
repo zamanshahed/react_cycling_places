@@ -19,11 +19,16 @@ const Auth = () => {
         }
     }, false);
 
+    const authSubmitHandler = event => {
+        event.preventDefault();
+        console.log(formState);
+    };
+
     return (
         <Card className="authentication">
             <h1>Login Required</h1>
             <hr />
-            <form>
+            <form onSubmit={authSubmitHandler}>
                 <Input
                     element="input"
                     id="email"
