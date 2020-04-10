@@ -9,7 +9,7 @@ import './Auth.css';
 
 const Auth = () => {
     const [isLoginMode, setIsLoginMode] = useState(true);
-    const [formState, inputHandler] = useForm({
+    const [formState, inputHandler, setFormData] = useForm({
         email: {
             vlaue: '',
             isValid: false
@@ -26,6 +26,23 @@ const Auth = () => {
     };
 
     const switchModeHandler = () => {
+        if (!isLoginMode) {
+            setFormData(
+                {
+                    ...formState.inputs,
+                    name: undefined
+                },
+                formState.inputs.email.isValid && formState.inputs.password.isValid
+            );
+        } else {
+            setFormData({
+                ...formState.inputs,
+                name: {
+                    vlaue: '',
+                    isValid: false
+                }
+            }, false);
+        }
         setIsLoginMode(prevMode => !prevMode);
     };
 
