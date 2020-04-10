@@ -46,7 +46,7 @@ const App = () => {
           <UpdatePlace />
         </Route>
 
-        <Redirect to="/auth" />
+        <Redirect to="/" />
       </Switch>
     );
   } else {
@@ -61,7 +61,7 @@ const App = () => {
         <Route path="/auth">
           <Auth />
         </Route>
-        <Redirect to="/" />
+        <Redirect to="/auth" />
       </Switch>
     );
   }
